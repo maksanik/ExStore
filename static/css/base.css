@@ -1,0 +1,17 @@
+body { 
+    padding-right: 0 !important 
+}
+
+.card-img-top {
+    width: 100%;
+    height: 230px; /* фиксированная высота */
+    object-fit: cover; /* сохраняет пропорции изображения и обрезает лишнее */
+}
+
+.card-title {
+    margin-bottom: 5px;
+}
+
+.card-text {
+    margin-bottom: 5px;
+}
