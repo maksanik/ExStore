@@ -127,6 +127,22 @@
   
   <div class="container mt-4" style="max-width:1000px;">
     <div class="row row-cols-2 row-cols-md-4 g-4">
+        {% for product in products %}
+        <div class="col">
+          <div class="card">
+              {% if product.image %}
+              <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+              {% else %}
+              <img src="{% static "images/image-not-found.png" %}" class="card-img-top" alt="{{ product.name }}">
+              {% endif %}
+              <div class="card-body">
+                  <h5 class="card-title">{{ product.name }}</h5>
+                  <p class="card-text">Цена: {{ product.price }} ₽</p>
+                  <a href="#" class="btn btn-primary">Подробнее</a>
+              </div>
+          </div>
+        </div>
+        {% endfor %}
         <div class="col">
             <div class="card">
                 <img src="{% static "images/chair.jpg" %}" class="card-img-top" alt="Товар 1">

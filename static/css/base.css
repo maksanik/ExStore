@@ -15,3 +15,7 @@ body {
 .card-text {
     margin-bottom: 5px;
 }
+
+h5 {
+    font-size: 1em;
+}
