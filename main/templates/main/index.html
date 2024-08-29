@@ -1,0 +1,143 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block content %}
+  <h1 style="text-align: center; margin: 30px 0;">Найдите свой товар с ExStore!</h1>
+  
+  <form class="d-flex" role="search" style="margin: 0 auto; margin-bottom: 50px">
+    <div class="dropdown me-4">
+      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Категории
+      </button>
+      <ul class="dropdown-menu">
+        {% for category in categories %}
+        <li><a class="dropdown-item" href="#">{{ category }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+    <input class="form-control me-3" type="search" placeholder="Поиск" aria-label="Search">
+    <button class="btn btn-outline-success" type="submit">Поиск</button>
+  </form>
+  
+  <div class="container mt-4" style="max-width:1000px;">
+    <div class="row row-cols-2 row-cols-md-4 g-4">
+        {% for product in products %}
+        <div class="col">
+          <div class="card">
+              {% if product.image %}
+              <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+              {% else %}
+              <img src="{% static "images/image-not-found.png" %}" class="card-img-top" alt="{{ product.name }}">
+              {% endif %}
+              <div class="card-body">
+                  <h5 class="card-title">{{ product.name }}</h5>
+                  <p class="card-text">Цена: {{ product.price }} ₽</p>
+                  <a href="#" class="btn btn-primary">Подробнее</a>
+              </div>
+          </div>
+        </div>
+        {% endfor %}
+        <div class="col">
+            <div class="card">
+                <img src="{% static "images/chair.jpg" %}" class="card-img-top" alt="Товар 1">
+                <div class="card-body">
+                    <h5 class="card-title">Название товара 1</h5>
+                    {% comment %} <p class="card-text">Описание товара 1.</p> {% endcomment %}
+                    <p class="card-text">Цена: 1000 руб.</p>
+                    <a href="#" class="btn btn-primary">Подробнее</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <img src="{% static "images/image-not-found.png" %}" class="card-img-top" alt="Товар 2">
+                <div class="card-body">
+                    <h5 class="card-title">Название товара 2</h5>
+                    {% comment %} <p class="card-text">Описание товара 2.</p> {% endcomment %}
+                    <p class="card-text">Цена: 2000 руб.</p>
+                    <a href="#" class="btn btn-primary">Подробнее</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <img src="{% static "images/image-not-found.png" %}" class="card-img-top" alt="Товар 3">
+                <div class="card-body">
+                    <h5 class="card-title">Название товара 3</h5>
+                    {% comment %} <p class="card-text">Описание товара 3.</p> {% endcomment %}
+                    <p class="card-text">Цена: 3000 руб.</p>
+                    <a href="#" class="btn btn-primary">Подробнее</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <img src="{% static "images/image-not-found.png" %}" class="card-img-top" alt="Товар 4">
+                <div class="card-body">
+                    <h5 class="card-title">Название товара 4</h5>
+                    
+                    <p class="card-text">Цена: 4000 руб.</p>
+                    <a href="#" class="btn btn-primary">Подробнее</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <img src="{% static "images/image-not-found.png" %}" class="card-img-top" alt="Товар 4">
+                <div class="card-body">
+                    <h5 class="card-title">Название товара 4</h5>
+                    
+                    <p class="card-text">Цена: 4000 руб.</p>
+                    <a href="#" class="btn btn-primary">Подробнее</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <img src="{% static "images/image-not-found.png" %}" class="card-img-top" alt="Товар 4">
+                <div class="card-body">
+                    <h5 class="card-title">Название товара 4</h5>
+                    
+                    <p class="card-text">Цена: 4000 руб.</p>
+                    <a href="#" class="btn btn-primary">Подробнее</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <img src="{% static "images/image-not-found.png" %}" class="card-img-top" alt="Товар 4">
+                <div class="card-body">
+                    <h5 class="card-title">Название товара 4</h5>
+                    
+                    <p class="card-text">Цена: 4000 руб.</p>
+                    <a href="#" class="btn btn-primary">Подробнее</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <img src="{% static "images/image-not-found.png" %}" class="card-img-top" alt="Товар 4">
+                <div class="card-body">
+                    <h5 class="card-title">Название товара 4</h5>
+                    
+                    <p class="card-text">Цена: 4000 руб.</p>
+                    <a href="#" class="btn btn-primary">Подробнее</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <img src="{% static "images/image-not-found.png" %}" class="card-img-top" alt="Товар 4">
+                <div class="card-body">
+                    <h5 class="card-title">Название товара 4</h5>
+                    
+                    <p class="card-text">Цена: 4000 руб.</p>
+                    <a href="#" class="btn btn-primary">Подробнее</a>
+                </div>
+            </div>
+        </div>
+        <!-- Еще карточки товаров -->
+    </div>
+  </div>
+{% endblock content %}
+  

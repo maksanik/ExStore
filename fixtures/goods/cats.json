@@ -1,0 +1,82 @@
+[
+    {
+        "model": "goods.category",
+        "pk": 2,
+        "fields": {
+            "name": "Недвижимость",
+            "slug": "nedvizhimost"
+        }
+    },
+    {
+        "model": "goods.category",
+        "pk": 3,
+        "fields": {
+            "name": "Транспорт",
+            "slug": "transport"
+        }
+    },
+    {
+        "model": "goods.category",
+        "pk": 4,
+        "fields": {
+            "name": "Электроника",
+            "slug": "elektronika"
+        }
+    },
+    {
+        "model": "goods.category",
+        "pk": 5,
+        "fields": {
+            "name": "Для дома и дачи",
+            "slug": "dlya-doma-i-dachi"
+        }
+    },
+    {
+        "model": "goods.category",
+        "pk": 6,
+        "fields": {
+            "name": "Личные вещи",
+            "slug": "lichnye-veshi"
+        }
+    },
+    {
+        "model": "goods.category",
+        "pk": 7,
+        "fields": {
+            "name": "Услуги",
+            "slug": "uslugi"
+        }
+    },
+    {
+        "model": "goods.category",
+        "pk": 8,
+        "fields": {
+            "name": "Хобби и отдых",
+            "slug": "hobbi-i-otdyh"
+        }
+    },
+    {
+        "model": "goods.category",
+        "pk": 9,
+        "fields": {
+            "name": "Животные",
+            "slug": "zhivotnye"
+        }
+    },
+    {
+        "model": "goods.category",
+        "pk": 12,
+        "fields": {
+            "name": "Работа",
+            "slug": "rabota"
+        }
+    },
+    {
+        "model": "goods.category",
+        "pk": 13,
+        "fields": {
+            "name": "Другое",
+            "slug": "drugoe"
+        }
+    }
+]

@@ -1,0 +1,14 @@
+[
+    {
+        "model": "goods.product",
+        "pk": 2,
+        "fields": {
+            "name": "Стул обыкновенный",
+            "slug": "stul-obyknovennyj",
+            "description": "Самый обыкновенный стул, ничего необычного. Удобный, можно поставить в любой комнате",
+            "image": "goods_images/office_chair.jpg",
+            "price": 432,
+            "category": 5
+        }
+    }
+]

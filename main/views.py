@@ -11,5 +11,5 @@ def index(request):
         'products': products,
     }    
 
-    return render(request, 'main/base.html', context=context)
+    return render(request, 'main/index.html', context=context)
 # Create your views here.
