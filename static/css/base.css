@@ -19,3 +19,11 @@ body {
 h5 {
     font-size: 1em;
 }
+
+.navbar-brand {
+    max-width:60px;
+}
+
+.fa-user {
+    font-size: 1.5em;
+}
