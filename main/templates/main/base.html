@@ -20,99 +20,46 @@
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-          <img class="navbar-brand" src="{% static "icons/logo.png" %}">
+          <a href={% url 'main:index' %} id="CompLogo">
+            <div class="d-flex flex-row align-items-center">
+              <img class="navbar-brand" src="{% static "icons/logo.png" %}">
+              <div id="CompName">ExStore</div>
+            </div>
+          </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
               {% if not user.is_authenticated %}
-              <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                      <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#authorization">Вход</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#registration">Регистрация</a>
-                  </li>
-              </ul>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#authorization">Вход</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#registration">Регистрация</a>
+                </li>
               {% else %}
-              <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'user:logout' %}">Выход</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#authorization">
                       <i class="fa-solid fa-user"></i></a>
                 </li>
-              </ul>
               {% endif %}
+              </ul>
           </div>
       </div>
   </nav>
 
-{% if not user.is_authenticated %}
-<!-- Модальное окно авторизации -->
-  <div class="modal fade" id="authorization" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="loginModalLabel">Авторизация</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <form method="post", action="{% url 'user:login' %}">
-          {% csrf_token %}
-        <div class="modal-body">
-            
-            <div class="mb-3">
-                <label for="username_id" class="form-label"><strong>Имя пользователя</strong></label>
-                <input name="username" type="text" class="form-control" id="username_id" placeholder="Введите имя пользователя или почту" required>
-            </div>
-            <div class="mb-3">
-                <label for="password_id" class="form-label"><strong>Пароль</strong></label>
-                <input name="password" type="password" class="form-control" id="password_id" placeholder="Введите пароль" required>
-            </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-          <button type="submit" class="btn btn-primary">Войти</button>
-        </div>
-        </form>
-      </div>
-    </div>
-  </div>
+  {% if not user.is_authenticated %}
 
-  <!-- Модальное окно регистрации -->
-  <div class="modal fade" id="registration" tabindex="-1" aria-labelledby="registrationModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="registrationModalLabel">Регистрация</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
-        </div>
-        <div class="modal-body">
-          <form>
-            <div class="mb-3">
-              <label for="username" class="form-label"><strong>Имя пользователя</strong></label>
-              <input type="text" class="form-control" id="username" placeholder="Введите имя пользователя" required>
-            </div>
-            <div class="mb-3">
-              <label for="email" class="form-label"><strong>Электронная почта</strong></label>
-              <input type="email" class="form-control" id="email" placeholder="Введите электронную почту" required>
-            </div>
-            <div class="mb-3">
-              <label for="password" class="form-label"><strong>Пароль</strong></label>
-              <input type="password" class="form-control" id="password" placeholder="Введите пароль" required>
-            </div>
-            <div class="mb-3">
-              <label for="confirmPassword" class="form-label"><strong>Подтвердите пароль</strong></label>
-              <input type="password" class="form-control" id="confirmPassword" placeholder="Подтвердите пароль" required>
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-          <button type="button" class="btn btn-primary">Зарегистрироваться</button>
-        </div>
-      </div>
-    </div>
-  </div>
+  {% include "users/loginModal.html" %}
+
+  {% include "users/registerModal.html" %}
+
   {% endif %}
+  
   </header>
   <main>
   <div style="width: 70%; margin: 0 auto;">

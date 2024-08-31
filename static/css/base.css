@@ -27,3 +27,16 @@ h5 {
 .fa-user {
     font-size: 1.5em;
 }
+
+.nav-link {
+    font-size: 1.4em;
+}
+
+#CompName {
+    color: white;
+    font-size: 3em;
+}
+
+#CompLogo {
+    text-decoration: none;
+}

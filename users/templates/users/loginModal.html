@@ -1,0 +1,29 @@
+<!-- Модальное окно авторизации -->
+<div class="modal fade" id="authorization" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="loginModalLabel">Авторизация</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form method="post", action="{% url 'user:login' %}">
+          {% csrf_token %}
+        <div class="modal-body">
+            
+            <div class="mb-3">
+                <label for="id_username" class="form-label"><strong>Имя пользователя</strong></label>
+                <input name="username" type="text" class="form-control" id="id_username" placeholder="Введите имя пользователя или почту" required>
+            </div>
+            <div class="mb-3">
+                <label for="id_password" class="form-label"><strong>Пароль</strong></label>
+                <input name="password" type="password" class="form-control" id="id_password" placeholder="Введите пароль" required>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+          <button type="submit" class="btn btn-primary">Войти</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
