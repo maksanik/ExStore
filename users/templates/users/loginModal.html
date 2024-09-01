@@ -1,5 +1,5 @@
 <!-- Модальное окно авторизации -->
-<div class="modal fade" id="authorization" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+<div class="modal {% if not form.errors %}fade{% endif %}" id="authorization" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -7,16 +7,23 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <form method="post", action="{% url 'user:login' %}">
-          {% csrf_token %}
+        {% csrf_token %}
         <div class="modal-body">
-            
             <div class="mb-3">
                 <label for="id_username" class="form-label"><strong>Имя пользователя</strong></label>
-                <input name="username" type="text" class="form-control" id="id_username" placeholder="Введите имя пользователя или почту" required>
+                <input name="username" type="text" class="form-control" id="id_username" placeholder="Введите имя пользователя или почту" required
+                value="{{ form.username.value }}">
+                {% if form.username.errors %}
+                <div>{{ form.username.errors }}</div>
+                {% endif %}
             </div>
             <div class="mb-3">
                 <label for="id_password" class="form-label"><strong>Пароль</strong></label>
-                <input name="password" type="password" class="form-control" id="id_password" placeholder="Введите пароль" required>
+                <input name="password" type="password" class="form-control" id="id_password" placeholder="Введите пароль" required
+                value="{{ form.password.value }}">
+                {% if form.password.errors %}
+                <div>{{ form.password.errors }}</div>
+                {% endif %}
             </div>
         </div>
         <div class="modal-footer">
