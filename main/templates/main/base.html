@@ -53,21 +53,21 @@
                       <i class="fa-solid fa-user"></i>
                   </a>
                   <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarProfile">
-                      <li><a class="dropdown-item" href="#">Профиль</a></li>
-                      <li><a class="dropdown-item" href="#">Корзина</a></li>
-                      <li><a class="dropdown-item" href="#">Создать объявление</a></li>
+                      <li><a class="dropdown-item" href="{% url "user:profile" %}">Профиль</a></li>
+                      <li><a class="dropdown-item" href="{% url "user:cart" %}">Корзина</a></li>
+                      <li><a class="dropdown-item" href="{% url "user:sell" %}">Создать объявление</a></li>
                       <li><hr class="dropdown-divider"></li>
                       <li><a class="dropdown-item" href="{% url 'user:logout' %}">Выход</a></li>
                   </ul>
                 </li>
                 <li class="nav-item d-block d-lg-none">
-                  <a class="nav-link" href="#">Профиль</a>
+                  <a class="nav-link" href="{% url "user:profile" %}">Профиль</a>
                 </li>
                 <li class="nav-item d-block d-lg-none">
-                  <a class="nav-link" href="#">Корзина</a>
+                  <a class="nav-link" href="{% url "user:cart" %}">Корзина</a>
                 </li>
                 <li class="nav-item d-block d-lg-none">
-                  <a class="nav-link" href="#">Создать объявление</a>
+                  <a class="nav-link" href="{% url "user:sell" %}">Создать объявление</a>
                 </li>
                 <li class="nav-item d-block d-lg-none">
                   <a class="nav-link" href="{% url 'user:logout' %}">Выход</a>
@@ -107,7 +107,7 @@
   
   </header>
   <main>
-  <div style="width: 70%; margin: 0 auto;">
+  <div style="width: 70%; margin: 0 auto; min-height: 79vh">
   {% block content %}{% endblock content %}
   </div>
   </main>

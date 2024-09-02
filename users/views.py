@@ -15,6 +15,24 @@ def profile(request):
 
     return render(request, 'users/profile.html', context=context)
 
+def cart(request):
+    # categories = Category.objects.all()
+    # products = Product.objects.all()
+    
+    context = {
+    }    
+
+    return render(request, 'users/cart.html', context=context)
+
+def sell_product(request):
+    # categories = Category.objects.all()
+    # products = Product.objects.all()
+    
+    context = {
+    }    
+
+    return render(request, 'users/sellProduct.html', context=context)
+
 def login(request):
     if request.method == 'POST':
         form = UserLoginForm(request, data=request.POST)

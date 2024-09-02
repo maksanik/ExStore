@@ -1,0 +1,71 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Корзина</h2>
+
+        <!-- Таблица товаров в корзине -->
+        <div class="table-responsive">
+            <table class="table align-middle">
+                <thead>
+                    <tr>
+                        <th scope="col">Товар</th>
+                        <th scope="col">Цена</th>
+                        <th scope="col">Количество</th>
+                        <th scope="col">Итого</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Товар 1 -->
+                    <tr>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <img src="https://via.placeholder.com/100" class="rounded me-3" alt="Товар 1" width="100">
+                                <div>
+                                    <h5 class="mb-0">Товар 1</h5>
+                                    <small class="text-muted">Описание товара 1</small>
+                                </div>
+                            </div>
+                        </td>
+                        <td>1 200 ₽</td>
+                        <td>
+                            <input type="number" class="form-control w-50" value="1" min="1">
+                        </td>
+                        <td>1 200 ₽</td>
+                        <td>
+                            <button class="btn btn-danger btn-sm">Удалить</button>
+                        </td>
+                    </tr>
+                    <!-- Товар 2 -->
+                    <tr>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <img src="https://via.placeholder.com/100" class="rounded me-3" alt="Товар 2" width="100">
+                                <div>
+                                    <h5 class="mb-0">Товар 2</h5>
+                                    <small class="text-muted">Описание товара 2</small>
+                                </div>
+                            </div>
+                        </td>
+                        <td>800 ₽</td>
+                        <td>
+                            <input type="number" class="form-control w-50" value="2" min="1">
+                        </td>
+                        <td>1 600 ₽</td>
+                        <td>
+                            <button class="btn btn-danger btn-sm">Удалить</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Общая стоимость и кнопка оформления заказа -->
+        <div class="d-flex justify-content-between align-items-center mt-4">
+            <h4>Общая стоимость: 2 800 ₽</h4>
+            <button class="btn btn-primary btn-lg">Оформить заказ</button>
+        </div>
+    </div>
+</div>
+{% endblock content %}

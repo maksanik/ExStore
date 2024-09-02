@@ -1,0 +1,70 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Создание объявления</h2>
+    
+    <!-- Форма для создания объявления -->
+    <form>
+        <!-- Название товара -->
+        <div class="mb-3">
+            <label for="productName" class="form-label">Название товара</label>
+            <input type="text" class="form-control" id="productName" placeholder="Введите название товара" required>
+        </div>
+
+        <!-- Описание товара -->
+        <div class="mb-3">
+            <label for="productDescription" class="form-label">Описание товара</label>
+            <textarea class="form-control" id="productDescription" rows="4" placeholder="Введите описание товара" required></textarea>
+        </div>
+
+        <!-- Категория товара -->
+        <div class="mb-3">
+            <label for="productCategory" class="form-label">Категория товара</label>
+            <select class="form-select" id="productCategory" required>
+                <option value="">Выберите категорию</option>
+                <option value="electronics">Электроника</option>
+                <option value="fashion">Одежда и обувь</option>
+                <option value="home">Для дома и дачи</option>
+                <option value="sports">Спорт и отдых</option>
+                <option value="auto">Автомобили</option>
+                <option value="real-estate">Недвижимость</option>
+                <!-- Добавьте больше категорий по необходимости -->
+            </select>
+        </div>
+
+        <!-- Цена товара -->
+        <div class="mb-3">
+            <label for="productPrice" class="form-label">Цена (₽)</label>
+            <input type="number" class="form-control" id="productPrice" placeholder="Введите цену товара" min="0" required>
+        </div>
+
+        <!-- Изображения товара -->
+        <div class="mb-3">
+            <label for="productImages" class="form-label">Загрузите изображения товара</label>
+            <input type="file" class="form-control" id="productImages" multiple accept="image/*">
+        </div>
+
+        {% comment %} <!-- Контактная информация -->
+        <div class="mb-3">
+            <label for="contactName" class="form-label">Контактное лицо</label>
+            <input type="text" class="form-control" id="contactName" placeholder="Ваше имя" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="contactPhone" class="form-label">Контактный телефон</label>
+            <input type="tel" class="form-control" id="contactPhone" placeholder="Ваш телефон" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="contactEmail" class="form-label">Электронная почта</label>
+            <input type="email" class="form-control" id="contactEmail" placeholder="Ваш email" required>
+        </div> {% endcomment %}
+
+        <!-- Кнопка для создания объявления -->
+        <div class="d-flex justify-content-end">
+            <button type="submit" class="btn btn-primary btn-lg">Создать объявление</button>
+        </div>
+    </form>
+</div>
+{% endblock content %}
