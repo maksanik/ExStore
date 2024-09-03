@@ -1,16 +1,23 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from goods.models import Category, Product
-from users.forms import UserLoginForm, UserRegisterForm
+from users.forms import UserLoginForm, UserRegisterForm, ProfileForm
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib import auth
 from django.urls import reverse
 
 def profile(request):
-    # categories = Category.objects.all()
-    # products = Product.objects.all()
-    
+    if request.method == 'POST':
+        form = ProfileForm(data=request.POST, instance=request.user, files=request.FILES)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('user:profile'))
+        
+    else:
+        form = ProfileForm(instance=request.user)
+        
     context = {
+        'form': form
     }    
 
     return render(request, 'users/profile.html', context=context)

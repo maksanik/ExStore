@@ -10,45 +10,59 @@
                 <h4>Настройка профиля</h4>
             </div>
             <div class="card-body">
-                <form>
+                <form action="{% url "user:profile" %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
                     <!-- Изображение профиля -->
                     <div class="mb-3 text-center">
+                        {% if not user.image %}
                         <img src="https://via.placeholder.com/150" class="rounded-circle mb-3" alt="Профиль" width="150" height="150">
+                        {% else %}
+                        <img src="{{ user.image.url }}" class="rounded-circle mb-3" alt="Профиль" width="150" height="150">
+                        {% endif %}
                         <div>
-                            <label for="profileImage" class="form-label">Изменить фото профиля</label>
-                            <input type="file" class="form-control" id="profileImage">
+                            <label for="id_image" class="form-label">Изменить фото профиля</label>
+                            <input name="image" type="file" class="form-control" id="id_image">
+                            {% if form.image.errors %}
+                            <div>{{ form.image.errors }}</div>
+                            {% endif %}
                         </div>
                     </div>
 
                     <!-- Имя пользователя -->
                     <div class="mb-3">
-                        <label for="userName" class="form-label">Имя</label>
-                        <input type="text" class="form-control" id="userName" value="Иван Иванов">
+                        <label for="id_username" class="form-label">Имя</label>
+                        <input name="username" type="text" class="form-control" id="id_username" value="{{ form.username.value }}">
+                        {% if form.username.errors %}
+                        <div>{{ form.username.errors }}</div>
+                        {% endif %}
                     </div>
 
-                    <!-- Описание -->
+                    {% comment %} <!-- Описание -->
                     <div class="mb-3">
                         <label for="userDescription" class="form-label">Описание</label>
                         <textarea class="form-control" id="userDescription" rows="3">Опытный разработчик с более чем 5-летним стажем в создании веб-приложений и сайтов. Специализируется на фронтенде и бэкенде.</textarea>
-                    </div>
+                    </div> {% endcomment %}
 
                     <!-- Email -->
                     <div class="mb-3">
-                        <label for="userEmail" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="userEmail" value="email@example.com">
+                        <label for="id_email" class="form-label">Email</label>
+                        <input name="email" type="email" class="form-control" id="id_email" value="{{ form.email.value }}">
+                        {% if form.email.errors %}
+                        <div>{{ form.email.errors }}</div>
+                        {% endif %}
                     </div>
 
-                    <!-- Телефон -->
+                    {% comment %} <!-- Телефон -->
                     <div class="mb-3">
                         <label for="userPhone" class="form-label">Телефон</label>
                         <input type="tel" class="form-control" id="userPhone" value="+7 (123) 456-78-90">
-                    </div>
+                    </div> {% endcomment %}
 
-                    <!-- Адрес -->
+                    {% comment %} <!-- Адрес -->
                     <div class="mb-3">
                         <label for="userLocation" class="form-label">Адрес</label>
                         <input type="text" class="form-control" id="userLocation" value="Москва, Россия">
-                    </div>
+                    </div> {% endcomment %}
 
                     <!-- Кнопки действия -->
                     <div class="d-flex justify-content-between">
