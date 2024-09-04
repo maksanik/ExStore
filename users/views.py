@@ -8,11 +8,16 @@ from django.urls import reverse
 
 def profile(request):
     if request.method == 'POST':
-        form = ProfileForm(data=request.POST, instance=request.user, files=request.FILES)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect(reverse('user:profile'))
+        action = request.POST.get("action")
         
+        if action == "save":
+            form = ProfileForm(data=request.POST, instance=request.user, files=request.FILES)
+            if form.is_valid():
+                form.save()
+                return HttpResponseRedirect(reverse('user:profile'))
+        elif action == "delete":
+            request.user.delete()
+            return HttpResponseRedirect(reverse('main:index'))
     else:
         form = ProfileForm(instance=request.user)
         

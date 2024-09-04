@@ -66,8 +66,23 @@
 
                     <!-- Кнопки действия -->
                     <div class="d-flex justify-content-between">
-                        <button type="submit" class="btn btn-primary">Сохранить изменения</button>
-                        <button type="reset" class="btn btn-secondary">Отмена</button>
+                        <button type="submit" name="action" value="save" class="btn btn-primary">Сохранить изменения</button>
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete">Удалить</button>
+                    </div>
+                    <!-- Модальное окно подтверждения удаления -->
+                    <div style="margin-top: 30vh;"class="modal fade" id="delete" tabindex="-1" aria-labelledby="deleteAccount" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="deleteAccount">Вы уверены что хотите удалить аккаунт?</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body d-flex justify-content-between">
+                            <button type="submit" name="action" value="delete" class="btn btn-danger">Да, удалить</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                            </div> 
+                        </div>
+                        </div>
                     </div>
                 </form>
             </div>
