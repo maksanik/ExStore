@@ -32,7 +32,7 @@
               <div class="card-body">
                   <h5 class="card-title">{{ product.name }}</h5>
                   <p class="card-text">Цена: {{ product.price }} ₽</p>
-                  <a href="#" class="btn btn-primary">Подробнее</a>
+                  <a href="{% url "product:index" product.slug %}" class="btn btn-primary">Подробнее</a>
               </div>
           </div>
         </div>
