@@ -2,11 +2,19 @@
 {% load static %}
 {% block content %}
 <!-- Product Details -->
-<div class="row">
-    <div class="col-md-6">
-        <img src="{{ product.image.url }}" class="img-fluid" alt="{{ product.name }}">
+<div class="row mt-5">
+    <div class="col-md-4 d-flex flex-column align-items-center">
+        <img src="{% static "images/image-not-found.png" %}" class="img-fluid" alt="1" style="height: 300px;">
+        <img src="{% static "images/chair.jpg" %}" class="img-fluid hidden" alt="2" style="height: 300px;">
+        <img src="{% static "images/image-not-found.png" %}" class="img-fluid hidden" alt="3" style="height: 300px;">
+        <img src="{% static "images/chair.jpg" %}" class="img-fluid hidden" alt="{{ product.name }}" style="height: 300px;">
+        <!-- Buttons below the image -->
+        <div class="d-flex justify-content-between mt-3" style="width: 100%;">
+            <button class="btn btn-outline-secondary" id="left" disabled>←</button>
+            <button class="btn btn-outline-secondary" id="right">→</button>
+        </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-8">
         <h1>{{ product.name }}</h1>
         <p class="text-muted">Категория: {{ product.category.name }}</p>
         <p class="fs-4 text-success">Цена: {{ product.price }} руб.</p>
@@ -16,4 +24,49 @@
         <a href="{% url "main:index" %}" class="btn btn-secondary btn-lg">Назад</a>
     </div>
 </div>
+<script>
+let left_b = document.querySelector("#left");
+let right_b = document.querySelector("#right");
+
+if (document.querySelectorAll("img.img-fluid").length <= 1) {
+    left_b.disabled = true;
+    right_b.disabled = true;
+} else {
+let curr_img = document.querySelector("img.img-fluid:not(.hidden)");
+let next_img = curr_img.nextElementSibling;
+let prev_img = curr_img.previousElementSibling;
+
+left_b.onclick = function() {
+    prev_img.classList.remove("hidden");
+    curr_img.classList.add("hidden");
+    right_b.disabled = false;
+
+    let tmp = curr_img;
+    curr_img = prev_img;
+    next_img = tmp;
+    prev_img = curr_img.previousElementSibling;
+    
+    if (prev_img == null) {
+        left_b.disabled = true;
+    }
+}
+
+right_b.onclick = function() {
+    next_img.classList.remove("hidden");
+    curr_img.classList.add("hidden");
+    left_b.disabled = false;
+
+    let tmp = curr_img;
+    curr_img = next_img;
+    prev_img = tmp;
+    next_img = curr_img.nextElementSibling;
+
+    if (next_img.tagName != "IMG") {
+        right_b.disabled = true;
+    }
+
+}
+
+}
+</script>
 {% endblock content %}
