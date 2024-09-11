@@ -24,8 +24,8 @@
         {% for product in products %}
         <div class="col">
           <div class="card">
-              {% if product.image %}
-              <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+              {% if product.images.first %}
+              <img src="{{ product.images.first.image.url }}" class="card-img-top" alt="{{ product.name }}">
               {% else %}
               <img src="{% static "images/image-not-found.png" %}" class="card-img-top" alt="{{ product.name }}">
               {% endif %}
@@ -37,28 +37,6 @@
           </div>
         </div>
         {% endfor %}
-        <div class="col">
-            <div class="card">
-                <img src="{% static "images/chair.jpg" %}" class="card-img-top" alt="Товар 1">
-                <div class="card-body">
-                    <h5 class="card-title">Название товара 1</h5>
-                    {% comment %} <p class="card-text">Описание товара 1.</p> {% endcomment %}
-                    <p class="card-text">Цена: 1000 руб.</p>
-                    <a href="#" class="btn btn-primary">Подробнее</a>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card">
-                <img src="{% static "images/image-not-found.png" %}" class="card-img-top" alt="Товар 2">
-                <div class="card-body">
-                    <h5 class="card-title">Название товара 2</h5>
-                    {% comment %} <p class="card-text">Описание товара 2.</p> {% endcomment %}
-                    <p class="card-text">Цена: 2000 руб.</p>
-                    <a href="#" class="btn btn-primary">Подробнее</a>
-                </div>
-            </div>
-        </div>
         <div class="col">
             <div class="card">
                 <img src="{% static "images/image-not-found.png" %}" class="card-img-top" alt="Товар 3">

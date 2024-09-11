@@ -2,12 +2,11 @@
 {% load static %}
 {% block content %}
 <!-- Product Details -->
-<div class="row mt-5">
-    <div class="col-md-4 d-flex flex-column align-items-center">
-        <img src="{% static "images/image-not-found.png" %}" class="img-fluid" alt="1" style="height: 300px;">
-        <img src="{% static "images/chair.jpg" %}" class="img-fluid hidden" alt="2" style="height: 300px;">
-        <img src="{% static "images/image-not-found.png" %}" class="img-fluid hidden" alt="3" style="height: 300px;">
-        <img src="{% static "images/chair.jpg" %}" class="img-fluid hidden" alt="{{ product.name }}" style="height: 300px;">
+<div class="row mt-5 mb-5">
+    <div class="col-md-4 d-flex flex-column align-items-center mb-5">
+        {% for image in product.images.all %}
+        <img src="{{ image.image.url }}" class="product_image img-fluid {% if not forloop.first %}hidden{% endif %}" alt="bebra" style="aspect-ratio: 9/10;">
+        {% endfor %}
         <!-- Buttons below the image -->
         <div class="d-flex justify-content-between mt-3" style="width: 100%;">
             <button class="btn btn-outline-secondary" id="left" disabled>←</button>

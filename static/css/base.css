@@ -6,7 +6,15 @@ html, body {
     margin: 0;
 }
 
-body { 
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1030;
+}
+
+body {
+    padding-top: 60px;
     padding-right: 0 !important 
 }
 
@@ -29,28 +37,23 @@ h5 {
 }
 
 .navbar-brand {
-    max-width:60px;
+    max-width: 45px;
 }
 
 .fa-user {
     font-size: 1.5em;
 }
-/* 
-@media (max-width: 992px) {
-    .fa-user {
-        display: none !important;
-    }
-} */
 
 .nav-link {
-    font-size: 1.4em;
+    font-size: 1.3em;
 }
 
 #CompName {
     color: white;
-    font-size: 3em;
+    font-size: 1.8em;
 }
 
 #CompLogo {
     text-decoration: none;
 }
+

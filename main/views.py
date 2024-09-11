@@ -4,7 +4,7 @@ from goods.models import Category, Product
 
 def index(request):
     categories = Category.objects.all()
-    products = Product.objects.all()
+    products = Product.objects.all().order_by("-id")
     
     context = {
         'categories': categories,
