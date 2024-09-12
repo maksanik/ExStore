@@ -1,5 +1,6 @@
 {% extends "main/base.html" %}
 {% load static %}
+{% load goods_tags %}
 
 {% block content %}
   <h1 style="text-align: center; margin: 30px 0;">Найдите свой товар с ExStore!</h1>
@@ -10,8 +11,9 @@
         Категории
       </button>
       <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="/">Все товары</a></li>
         {% for category in categories %}
-        <li><a class="dropdown-item" href="#">{{ category }}</a></li>
+        <li><a class="dropdown-item" href="?{% change_params category=category.slug %}">{{ category }}</a></li>
         {% endfor %}
       </ul>
     </div>
