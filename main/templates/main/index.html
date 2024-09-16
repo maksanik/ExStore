@@ -5,7 +5,7 @@
 {% block content %}
   <h1 style="text-align: center; margin: 30px 0;">Найдите свой товар с ExStore!</h1>
   
-  <form class="d-flex" role="search" style="margin: 0 auto; margin-bottom: 50px">
+  <form method="get" action="{% url "main:index" %}" class="d-flex" role="search" style="margin: 0 auto; margin-bottom: 50px">
     <div class="dropdown me-4">
       <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
         Категории
@@ -17,7 +17,10 @@
         {% endfor %}
       </ul>
     </div>
-    <input class="form-control me-3" type="search" placeholder="Поиск" aria-label="Search">
+    {% if request.GET.category %}
+    <input type="hidden" name="category" value="{{ request.GET.category }}">
+    {% endif %}
+    <input class="form-control me-3" name="q" type="search" placeholder="Поиск" aria-label="Search">
     <button class="btn btn-outline-success" type="submit">Поиск</button>
   </form>
   
