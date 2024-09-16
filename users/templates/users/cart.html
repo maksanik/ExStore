@@ -18,6 +18,7 @@
                 </thead>
                 <tbody>
                     <!-- Товар 1 -->
+                    {% for product in products %}
                     <tr>
                         <td>
                             <div class="d-flex align-items-center">
@@ -37,6 +38,7 @@
                             <button class="btn btn-danger btn-sm">Удалить</button>
                         </td>
                     </tr>
+                    {% endfor %}
                     <!-- Товар 2 -->
                     <tr>
                         <td>

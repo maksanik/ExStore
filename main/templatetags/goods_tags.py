@@ -6,6 +6,10 @@ register = template.Library()
 @register.simple_tag(takes_context=True)
 def change_params(context, **kwargs):
     query = context['request'].GET.dict()
-    kwargs.update(query)
+    tmp = {}
+    tmp.update(kwargs)
+    tmp.update(query)
+    tmp.update(kwargs)
+   
     
-    return urlencode(kwargs)
+    return urlencode(tmp)
