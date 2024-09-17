@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from goods.models import Category, Product
-from users.models import Cart
+from users.models import Cart_item
 from users.forms import UserLoginForm, UserRegisterForm, ProfileForm
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib import auth
@@ -30,10 +30,12 @@ def profile(request):
 
 def cart(request):
     # categories = Category.objects.all()
-    products = Product.objects.all()
+    curr_user = request.user
+    user_cart = Cart_item.objects.filter(user=curr_user)
+    print(user_cart)
     
     context = {
-        'products': products
+        'user_cart': user_cart
     }    
 
     return render(request, 'users/cart.html', context=context)

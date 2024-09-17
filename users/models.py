@@ -8,12 +8,13 @@ class User(AbstractUser):
     def __str__(self):
         return self.username
 
-class Cart(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE) 
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    count = models.IntegerField()
+class Cart_item(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='users') 
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='products')
+    count = models.PositiveIntegerField(default=1)
     
     class Meta:
+        unique_together = ('user', 'product')
         verbose_name = 'Корзина'
         verbose_name_plural = 'Корзины'
         

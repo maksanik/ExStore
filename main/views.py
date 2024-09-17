@@ -7,7 +7,6 @@ def index(request):
     
     category_slug = request.GET.get("category", None)
     query = request.GET.get("q", None)
-    print(query)
     
     if category_slug == None:
         products = Product.objects.all()

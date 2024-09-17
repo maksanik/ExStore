@@ -18,22 +18,22 @@
                 </thead>
                 <tbody>
                     <!-- Товар 1 -->
-                    {% for product in products %}
+                    {% for cart_item in user_cart %}
                     <tr>
                         <td>
                             <div class="d-flex align-items-center">
-                                <img src="https://via.placeholder.com/100" class="rounded me-3" alt="Товар 1" width="100">
+                                <img src="{{ cart_item.product.images.first.image.url }}" class="rounded me-3" alt="Товар 1" width="100">
                                 <div>
-                                    <h5 class="mb-0">Товар 1</h5>
+                                    <h5 class="mb-0">{{ cart_item.product.name }}</h5>
                                     <small class="text-muted">Описание товара 1</small>
                                 </div>
                             </div>
                         </td>
-                        <td>1 200 ₽</td>
+                        <td>{{ cart_item.product.price }} ₽</td>
                         <td>
-                            <input type="number" class="form-control w-50" value="1" min="1">
+                            <input type="number" class="form-control w-50" value="{{ cart_item.count }}" min="1">
                         </td>
-                        <td>1 200 ₽</td>
+                        <td>{{ cart_item.product.price }} ₽</td>
                         <td>
                             <button class="btn btn-danger btn-sm">Удалить</button>
                         </td>
@@ -45,8 +45,8 @@
                             <div class="d-flex align-items-center">
                                 <img src="https://via.placeholder.com/100" class="rounded me-3" alt="Товар 2" width="100">
                                 <div>
-                                    <h5 class="mb-0">Товар 2</h5>
-                                    <small class="text-muted">Описание товара 2</small>
+                                    <h5 class="mb-0">Товар заглушка</h5>
+                                    <small class="text-muted">Описание заглушка</small>
                                 </div>
                             </div>
                         </td>
