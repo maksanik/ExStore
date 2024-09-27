@@ -2,6 +2,7 @@
 
 {% block content %}
 <div class="container mt-5">
+    <!-- Сделать типо POST запрос -->
     <h2 class="mb-4">Корзина</h2>
 
         <!-- Таблица товаров в корзине -->
@@ -35,7 +36,11 @@
                         </td>
                         <td>{{ cart_item.product.price }} ₽</td>
                         <td>
-                            <button class="btn btn-danger btn-sm">Удалить</button>
+                            <form method="post" action="user:cart">
+                                {% csrf_token %}
+                                <input type=hidden name="cart_item_id" value="{{ cart_item.id }}"/>
+                                <button type="submit" class="btn btn-danger btn-sm">Удалить</button>
+                            </form>
                         </td>
                     </tr>
                     {% endfor %}

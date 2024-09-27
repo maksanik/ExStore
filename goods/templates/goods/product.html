@@ -19,7 +19,14 @@
         <p class="fs-4 text-success">Цена: {{ product.price }} руб.</p>
         <p>{{ product.description }}</p>
         <div class="d-flex justify-content-between">
-        <a href="#" class="btn btn-primary btn-lg">Купить</a>
+        <!-- Вариант 1 -->  
+        <form action="{% url "product:index" product.slug %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="product_slug" value="{{ product.slug }}">
+            <button type="submit" class="btn btn-primary btn-lg">Купить</button>
+        </form>
+        <!-- Вариант 2 -->
+        {% comment %} <a href={% url '' %} class="btn btn-primary btn-lg">Купить</a> {% endcomment %}
         <a href="{% url "main:index" %}" class="btn btn-secondary btn-lg">Назад</a>
     </div>
 </div>

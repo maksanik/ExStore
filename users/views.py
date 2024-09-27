@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from goods.models import Category, Product
 from users.models import Cart_item
@@ -29,16 +29,19 @@ def profile(request):
     return render(request, 'users/profile.html', context=context)
 
 def cart(request):
-    # categories = Category.objects.all()
-    curr_user = request.user
-    user_cart = Cart_item.objects.filter(user=curr_user)
-    print(user_cart)
-    
-    context = {
-        'user_cart': user_cart
-    }    
+    if request.method == "POST":
+        # cart_to_delete = Cart_item.objects.get(pk=request.POST.get("cart_item_id", None))
+        print("БЕБРААА")
+        redirect("user:cart")
+    else:
+        curr_user = request.user
+        user_cart = Cart_item.objects.filter(user=curr_user)
+        
+        context = {
+            'user_cart': user_cart
+        }    
 
-    return render(request, 'users/cart.html', context=context)
+        return render(request, 'users/cart.html', context=context)
 
 def sell_product(request):
     # categories = Category.objects.all()
