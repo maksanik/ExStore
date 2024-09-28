@@ -18,7 +18,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Товар 1 -->
+                    <!-- Товар -->
                     {% for cart_item in user_cart %}
                     <tr>
                         <td>
@@ -36,7 +36,7 @@
                         </td>
                         <td>{{ cart_item.product.price }} ₽</td>
                         <td>
-                            <form method="post" action="user:cart">
+                            <form method="post" action="{% url "user:cart" %}">
                                 {% csrf_token %}
                                 <input type=hidden name="cart_item_id" value="{{ cart_item.id }}"/>
                                 <button type="submit" class="btn btn-danger btn-sm">Удалить</button>
@@ -44,29 +44,6 @@
                         </td>
                     </tr>
                     {% endfor %}
-                    <!-- Товар 2 -->
-                    <tr>
-                        <td>
-                            <div class="d-flex align-items-center">
-                                <img src="https://via.placeholder.com/100" class="rounded me-3" alt="Товар 2" width="100">
-                                <div>
-                                    <h5 class="mb-0">Товар заглушка</h5>
-                                    <small class="text-muted">Описание заглушка</small>
-                                </div>
-                            </div>
-                        </td>
-                        <td>800 ₽</td>
-                        <td>
-                            <input type="number" class="form-control w-50" value="2" min="1">
-                        </td>
-                        <td>1 600 ₽</td>
-                        <td>
-                            <button class="btn btn-danger btn-sm">Удалить</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
 
         <!-- Общая стоимость и кнопка оформления заказа -->
         <div class="d-flex justify-content-between align-items-center mt-4">

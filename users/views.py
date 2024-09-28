@@ -30,9 +30,8 @@ def profile(request):
 
 def cart(request):
     if request.method == "POST":
-        # cart_to_delete = Cart_item.objects.get(pk=request.POST.get("cart_item_id", None))
-        print("БЕБРААА")
-        redirect("user:cart")
+        Cart_item.objects.get(pk=request.POST.get("cart_item_id", None)).delete()
+        return redirect("user:cart")
     else:
         curr_user = request.user
         user_cart = Cart_item.objects.filter(user=curr_user)
