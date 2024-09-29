@@ -30,10 +30,7 @@ def profile(request):
     return render(request, 'users/profile.html', context=context)
 
 def cart(request):
-    if request.method == "POST":
-        Cart_item.objects.get(pk=request.POST.get("cart_item_id", None)).delete()
-        return redirect("user:cart")
-    else:
+    if request.method == "GET":
         curr_user = request.user
         user_cart = Cart_item.objects.filter(user=curr_user)
         total_sum = sum([cart_item.product.price * cart_item.count for cart_item in user_cart])
