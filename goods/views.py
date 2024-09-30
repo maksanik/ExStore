@@ -22,9 +22,13 @@ def product_page(request, product_slug):
         return redirect("main:index")
     else:
         product = Product.objects.get(slug=product_slug)
-        
+        curr_user = request.user
+        product_in_cart = Cart_item.objects.filter(product=product, user=curr_user).first()
+        print(product_in_cart.count)
+
         context = {
-            "product": product
+            "product": product,
+            "product_in_cart": product_in_cart
         }
         
         return render(request, 'goods/product.html', context=context)

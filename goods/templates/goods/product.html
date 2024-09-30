@@ -20,11 +20,21 @@
         <p>{{ product.description }}</p>
         <div class="d-flex justify-content-between">
         <!-- Переделать без возвращения на главную -->
+        {% if product_in_cart %}
+        <div class="d-flex align-items-center">
+            <a href="{% url "user:cart" %}" class="btn btn-success btn-lg" style="margin-right: 30px;">В корзине</a>
+            <button class="btn btn-outline-secondary" onclick="updateCart('decrease', {{ product_in_cart.id }})">−</button>
+            <input type="number" id="quantity_{{ product_in_cart.id }}" class="form-control text-center mx-2" value="{{ product_in_cart.count }}" min="1" style="width: 60px;" readonly>
+            <button class="btn btn-outline-secondary" onclick="updateCart('increase', {{ product_in_cart.id }})">+</button>
+        </div>
+        {% else %}
         <form action="{% url "product:index" product.slug %}" method="post">
             {% csrf_token %}
             <input type="hidden" name="product_slug" value="{{ product.slug }}">
             <button type="submit" class="btn btn-primary btn-lg">Купить</button>
         </form>
+        {% endif %}
+
         <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-secondary btn-lg">Назад</a>
     </div>
 </div>
@@ -72,5 +82,30 @@ right_b.onclick = function() {
 }
 
 }
+</script>
+<script>
+    function updateCart(action, id) {
+        inpt = document.querySelector(`#quantity_${id}`);
+        
+        if (action == "increase") {
+            inpt.value = Number(inpt.value) + 1;
+        } else if (action == "decrease" && Number(inpt.value) > 1) {
+            inpt.value = Number(inpt.value) - 1;
+        }
+
+        const newCount = Number(inpt.value);
+            fetch('{% url "user:cart_update_item" %}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: JSON.stringify({
+                    'cart_item_id': id,
+                    'new_count': newCount
+                })
+            });
+
+    }
 </script>
 {% endblock content %}
