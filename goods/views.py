@@ -19,12 +19,11 @@ def product_page(request, product_slug):
             cart_item.count += 1 
             cart_item.save()
             
-        return redirect("main:index")
+        return redirect("product:index", product_slug=product_slug)
     else:
         product = Product.objects.get(slug=product_slug)
         curr_user = request.user
         product_in_cart = Cart_item.objects.filter(product=product, user=curr_user).first()
-        print(product_in_cart.count)
 
         context = {
             "product": product,
